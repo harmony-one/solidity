@@ -839,7 +839,7 @@ tuple<bool, rational> RationalNumberType::isValidLiteral(Literal const& _literal
 	switch (_literal.subDenomination())
 	{
 		case Literal::SubDenomination::None:
-		case Literal::SubDenomination::Wei:
+		case Literal::SubDenomination::Atto:
 		case Literal::SubDenomination::Second:
 			break;
 		case Literal::SubDenomination::Szabo:

@@ -1,7 +1,7 @@
 contract c {
     function f() public
     {
-         a = 1 wei;
+         a = 1 atto;
          b = 2 szabo;
          c = 3 finney;
          b = 4 ether;

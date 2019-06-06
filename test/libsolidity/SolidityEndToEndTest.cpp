@@ -13423,10 +13423,10 @@ BOOST_AUTO_TEST_CASE(scientific_notation)
 	char const* sourceCode = R"(
 		contract C {
 			function f() public returns (uint) {
-				return 2e10 wei;
+				return 2e10 atto;
 			}
 			function g() public returns (uint) {
-				return 200e-2 wei;
+				return 200e-2 atto;
 			}
 			function h() public returns (uint) {
 				return 2.5e1;

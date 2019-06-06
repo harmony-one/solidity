@@ -2,16 +2,16 @@
 Units and Globally Available Variables
 **************************************
 
-.. index:: wei, finney, szabo, ether
+.. index:: atto, finney, szabo, ether
 
 Ether Units
 ===========
 
-A literal number can take a suffix of ``wei``, ``finney``, ``szabo`` or ``ether`` to specify a subdenomination of Ether, where Ether numbers without a postfix are assumed to be Wei.
+A literal number can take a suffix of ``atto``, ``finney``, ``szabo`` or ``ether`` to specify a subdenomination of Ether, where Ether numbers without a postfix are assumed to be Atto.
 
 ::
 
-    assert(1 wei == 1);
+    assert(1 atto == 1);
     assert(1 szabo == 1e12);
     assert(1 finney == 1e15);
     assert(1 ether == 1e18);
@@ -75,7 +75,7 @@ Block and Transaction Properties
 - ``msg.data`` (``bytes calldata``): complete calldata
 - ``msg.sender`` (``address payable``): sender of the message (current call)
 - ``msg.sig`` (``bytes4``): first four bytes of the calldata (i.e. function identifier)
-- ``msg.value`` (``uint``): number of wei sent with the message
+- ``msg.value`` (``uint``): number of atto sent with the message
 - ``now`` (``uint``): current block timestamp (alias for ``block.timestamp``)
 - ``tx.gasprice`` (``uint``): gas price of the transaction
 - ``tx.origin`` (``address payable``): sender of the transaction (full call chain)
@@ -198,7 +198,7 @@ Mathematical and Cryptographic Functions
 
 .. note::
 
-    When running ``sha256``, ``ripemd160`` or ``ecrecover`` on a *private blockchain*, you might encounter Out-of-Gas. This is because these functions are implemented as "precompiled contracts" and only really exist after they receive the first message (although their contract code is hardcoded). Messages to non-existing contracts are more expensive and thus the execution might run into an Out-of-Gas error. A workaround for this problem is to first send Wei (1 for example) to each of the contracts before you use them in your actual contracts. This is not an issue on the main or test net.
+    When running ``sha256``, ``ripemd160`` or ``ecrecover`` on a *private blockchain*, you might encounter Out-of-Gas. This is because these functions are implemented as "precompiled contracts" and only really exist after they receive the first message (although their contract code is hardcoded). Messages to non-existing contracts are more expensive and thus the execution might run into an Out-of-Gas error. A workaround for this problem is to first send Atto (1 for example) to each of the contracts before you use them in your actual contracts. This is not an issue on the main or test net.
 
 .. index:: balance, send, transfer, call, callcode, delegatecall, staticcall
 
@@ -208,11 +208,11 @@ Members of Address Types
 ------------------------
 
 ``<address>.balance`` (``uint256``):
-    balance of the :ref:`address` in Wei
+    balance of the :ref:`address` in Atto
 ``<address payable>.transfer(uint256 amount)``:
-    send given amount of Wei to :ref:`address`, reverts on failure, forwards 2300 gas stipend, not adjustable
+    send given amount of Atto to :ref:`address`, reverts on failure, forwards 2300 gas stipend, not adjustable
 ``<address payable>.send(uint256 amount) returns (bool)``:
-    send given amount of Wei to :ref:`address`, returns ``false`` on failure, forwards 2300 gas stipend, not adjustable
+    send given amount of Atto to :ref:`address`, returns ``false`` on failure, forwards 2300 gas stipend, not adjustable
 ``<address>.call(bytes memory) returns (bool, bytes memory)``:
     issue low-level ``CALL`` with the given payload, returns success condition and return data, forwards all available gas, adjustable
 ``<address>.delegatecall(bytes memory) returns (bool, bytes memory)``:

@@ -211,12 +211,12 @@ BOOST_AUTO_TEST_CASE(int_literal)
 	BOOST_CHECK_EQUAL_COLLECTIONS(code.begin(), code.end(), expectation.begin(), expectation.end());
 }
 
-BOOST_AUTO_TEST_CASE(int_with_wei_ether_subdenomination)
+BOOST_AUTO_TEST_CASE(int_with_atto_ether_subdenomination)
 {
 	char const* sourceCode = R"(
 		contract test {
 			constructor() {
-				 uint x = 1 wei;
+				 uint x = 1 atto;
 			}
 		}
 	)";

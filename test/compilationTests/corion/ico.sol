@@ -12,7 +12,7 @@ contract ico is safeMath {
         uint8 rate;
     }
     struct affiliate_s {
-        uint256 weight;
+        uint256 attoght;
         uint256 paid;
     }
     struct interest_s {

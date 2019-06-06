@@ -70,7 +70,7 @@ all function arguments have to be copied to memory.
     A function call from one contract to another does not create its own transaction,
     it is a message call as part of the overall transaction.
 
-When calling functions of other contracts, you can specify the amount of Wei or gas sent with the call with the special options ``.value()`` and ``.gas()``, respectively. Any Wei you send to the contract is added to the total balance of the contract:
+When calling functions of other contracts, you can specify the amount of Atto or gas sent with the call with the special options ``.value()`` and ``.gas()``, respectively. Any Atto you send to the contract is added to the total balance of the contract:
 
 ::
 
