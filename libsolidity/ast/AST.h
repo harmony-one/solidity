@@ -1666,7 +1666,7 @@ public:
 	enum class SubDenomination
 	{
 		None = static_cast<int>(Token::Illegal),
-		Wei = static_cast<int>(Token::SubWei),
+		atto = static_cast<int>(Token::Subatto),
 		Szabo = static_cast<int>(Token::SubSzabo),
 		Finney = static_cast<int>(Token::SubFinney),
 		Ether = static_cast<int>(Token::SubEther),

@@ -367,7 +367,7 @@ Breaking Changes:
    ``sizeof``, ``supports``, ``typedef`` and ``unchecked``.
  * General: Remove assembly instruction aliases ``sha3`` and ``suicide``
  * General: C99-style scoping rules are enforced now. This was already the case in the experimental 0.5.0 mode.
- * General: Disallow combining hex numbers with unit denominations (e.g. ``0x1e wei``). This was already the case in the experimental 0.5.0 mode.
+ * General: Disallow combining hex numbers with unit denominations (e.g. ``0x1e atto``). This was already the case in the experimental 0.5.0 mode.
  * JSON AST: Remove ``constant`` and ``payable`` fields (the information is encoded in the ``stateMutability`` field).
  * JSON AST: Replace the ``isConstructor`` field by a new ``kind`` field, which can be ``constructor``, ``fallback`` or ``function``.
  * Interface: Remove "clone contract" feature. The ``--clone-bin`` and ``--combined-json clone-bin`` commandline options are not available anymore.
@@ -582,7 +582,7 @@ Bugfixes:
  * Type Checker: Fix asymmetry bug when comparing with literal numbers.
  * Type System: Improve error message when attempting to shift by a fractional amount.
  * Type System: Make external library functions accessible.
- * Type System: Prevent encoding of weird types.
+ * Type System: Prevent encoding of attord types.
  * Type System: Restrict rational numbers to 4096 bits.
 
 ### 0.4.21 (2018-03-07)

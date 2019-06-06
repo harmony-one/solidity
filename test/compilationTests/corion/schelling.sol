@@ -16,8 +16,8 @@ contract schellingVars {
         afterSendVoteBad
     }
     struct _rounds {
-        uint256 totalAboveWeight;
-        uint256 totalBelowWeight;
+        uint256 totalAboveattoght;
+        uint256 totalBelowattoght;
         uint256 reward;
         uint256 blockHeight;
         bool voted;
@@ -67,13 +67,13 @@ contract schellingDB is safeMath, schellingVars {
     _rounds[] private rounds;
     function getRound(uint256 _id) public view returns(bool, uint256, uint256, uint256, uint256, bool) {
         if ( rounds.length <= _id ) { return (false, 0, 0, 0, 0, false); }
-        else { return (true, rounds[_id].totalAboveWeight, rounds[_id].totalBelowWeight, rounds[_id].reward, rounds[_id].blockHeight, rounds[_id].voted); }
+        else { return (true, rounds[_id].totalAboveattoght, rounds[_id].totalBelowattoght, rounds[_id].reward, rounds[_id].blockHeight, rounds[_id].voted); }
     }
-    function pushRound(uint256 _totalAboveWeight, uint256 _totalBelowWeight, uint256 _reward, uint256 _blockHeight, bool _voted) isOwner external returns(bool, uint256) {
-        return (true, rounds.push(_rounds(_totalAboveWeight, _totalBelowWeight, _reward, _blockHeight, _voted)));
+    function pushRound(uint256 _totalAboveattoght, uint256 _totalBelowattoght, uint256 _reward, uint256 _blockHeight, bool _voted) isOwner external returns(bool, uint256) {
+        return (true, rounds.push(_rounds(_totalAboveattoght, _totalBelowattoght, _reward, _blockHeight, _voted)));
     }
-    function setRound(uint256 _id, uint256 _totalAboveWeight, uint256 _totalBelowWeight, uint256 _reward, uint256 _blockHeight, bool _voted) isOwner external returns(bool) {
-        rounds[_id] = _rounds(_totalAboveWeight, _totalBelowWeight, _reward, _blockHeight, _voted);
+    function setRound(uint256 _id, uint256 _totalAboveattoght, uint256 _totalBelowattoght, uint256 _reward, uint256 _blockHeight, bool _voted) isOwner external returns(bool) {
+        rounds[_id] = _rounds(_totalAboveattoght, _totalBelowattoght, _reward, _blockHeight, _voted);
         return true;
     }
     function getCurrentRound() public view returns(bool, uint256) {
@@ -190,8 +190,8 @@ contract schelling is module, announcementTypes, schellingVars {
     }
     function setRound(uint256 id, _rounds memory round) internal {
         require( db.setRound(id,
-            round.totalAboveWeight,
-            round.totalBelowWeight,
+            round.totalAboveattoght,
+            round.totalBelowattoght,
             round.reward,
             round.blockHeight,
             round.voted
@@ -199,8 +199,8 @@ contract schelling is module, announcementTypes, schellingVars {
     }
     function pushRound(_rounds memory round) internal returns (uint256) {
         (bool a, uint256 b) = db.pushRound(
-            round.totalAboveWeight,
-            round.totalBelowWeight,
+            round.totalAboveattoght,
+            round.totalBelowattoght,
             round.reward,
             round.blockHeight,
             round.voted
@@ -340,11 +340,11 @@ contract schelling is module, announcementTypes, schellingVars {
             if (round.blockHeight+roundBlockDelay/2 >= block.number) {
                 if ( bytes(vote)[0] == aboveChar ) {
                     voter.status = voterStatus.afterSendVoteOk;
-                    round.totalAboveWeight += funds;
+                    round.totalAboveattoght += funds;
                     voter.voteResult = true;
                 } else if ( bytes(vote)[0] == belowChar ) {
                     voter.status = voterStatus.afterSendVoteOk;
-                    round.totalBelowWeight += funds;
+                    round.totalBelowattoght += funds;
                 } else { lostEverything = true; }
             } else {
                 voter.status = voterStatus.afterSendVoteBad;
@@ -382,7 +382,7 @@ contract schelling is module, announcementTypes, schellingVars {
             voter.status == voterStatus.afterSendVoteBad );
         if ( round.blockHeight+roundBlockDelay/2 <= block.number ) {
             if ( isWinner(round, voter.voteResult) && voter.status == voterStatus.afterSendVoteOk ) {
-                voter.rewards += funds * round.reward / getRoundWeight(round.totalAboveWeight, round.totalBelowWeight);
+                voter.rewards += funds * round.reward / getRoundattoght(round.totalAboveattoght, round.totalBelowattoght);
             } else {
                 require( moduleHandler(moduleHandlerAddress).burn(address(this), funds) );
                 delete funds;
@@ -446,7 +446,7 @@ contract schelling is module, announcementTypes, schellingVars {
         for ( uint256 a=currentRound ; a>=currentRound-interestCheckRounds ; a-- ) {
             if (a == 0) { break; }
             prevRound = getRound(a);
-            if ( prevRound.totalAboveWeight > prevRound.totalBelowWeight ) { above++; }
+            if ( prevRound.totalAboveattoght > prevRound.totalBelowattoght ) { above++; }
         }
         uint256 expansion;
         if ( above >= interestCheckAboves ) {
@@ -513,13 +513,13 @@ contract schelling is module, announcementTypes, schellingVars {
         */
         return getSchellingExpansion(id);
     }
-    function getRoundWeight(uint256 aboveW, uint256 belowW) internal returns (uint256) {
+    function getRoundattoght(uint256 aboveW, uint256 belowW) internal returns (uint256) {
         /*
-            Inside function for calculating the weights of the votes.
+            Inside function for calculating the attoghts of the votes.
 
-            @aboveW     Weight of votes: ABOVE
-            @belowW     Weight of votes: BELOW
-            @uint256    Calculatet weight
+            @aboveW     attoght of votes: ABOVE
+            @belowW     attoght of votes: BELOW
+            @uint256    Calculatet attoght
         */
         if ( aboveW == belowW ) {
             return aboveW + belowW;
@@ -537,8 +537,8 @@ contract schelling is module, announcementTypes, schellingVars {
             @aboveVote  Is the vote = ABOVE or not
             @bool       Result
         */
-        if ( round.totalAboveWeight == round.totalBelowWeight ||
-            ( round.totalAboveWeight > round.totalBelowWeight && aboveVote ) ) {
+        if ( round.totalAboveattoght == round.totalBelowattoght ||
+            ( round.totalAboveattoght > round.totalBelowattoght && aboveVote ) ) {
             return true;
         }
         return false;

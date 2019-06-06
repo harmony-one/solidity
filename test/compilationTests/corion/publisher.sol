@@ -21,13 +21,13 @@ contract publisher is announcementTypes, module, safeMath {
         for ( a=0 ; a<opponents[from].length ; a++ ) {
             announcementID = opponents[msg.sender][a];
             if ( announcements[announcementID].end < block.number && announcements[announcementID].open ) {
-                announcements[announcementID].oppositionWeight = safeSub(announcements[a].oppositionWeight, value);
+                announcements[announcementID].oppositionattoght = safeSub(announcements[a].oppositionattoght, value);
             }
         }
         for ( a=0 ; a<opponents[to].length ; a++ ) {
             announcementID = opponents[msg.sender][a];
             if ( announcements[announcementID].end < block.number && announcements[announcementID].open ) {
-                announcements[announcementID].oppositionWeight = safeAdd(announcements[a].oppositionWeight, value);
+                announcements[announcementID].oppositionattoght = safeAdd(announcements[a].oppositionattoght, value);
             }
         }
         return true;
@@ -49,7 +49,7 @@ contract publisher is announcementTypes, module, safeMath {
         string announcement;
         string link;
         bool oppositable;
-        uint256 oppositionWeight;
+        uint256 oppositionattoght;
         bool result;
 
         string _str;
@@ -93,7 +93,7 @@ contract publisher is announcementTypes, module, safeMath {
         Closed = ! announcements[id].open;
         Announcement = announcements[id].announcement;
         Link = announcements[id].link;
-        if ( checkOpposited(announcements[id].oppositionWeight, announcements[id].oppositable) ) {
+        if ( checkOpposited(announcements[id].oppositionattoght, announcements[id].oppositable) ) {
             Opposited = true;
         }
         _str = announcements[id]._str;
@@ -101,11 +101,11 @@ contract publisher is announcementTypes, module, safeMath {
         _addr = announcements[id]._addr;
     }
 
-    function checkOpposited(uint256 weight, bool oppositable) public view returns (bool success) {
+    function checkOpposited(uint256 attoght, bool oppositable) public view returns (bool success) {
         /*
             Veto check
 
-            @weight         Purport of objections so far
+            @attoght         Purport of objections so far
             @oppositable    Opposable at all
 
             @success        Opposed or not
@@ -113,7 +113,7 @@ contract publisher is announcementTypes, module, safeMath {
         if ( ! oppositable ) { return false; }
         (bool _success, uint256 _amount) = moduleHandler(moduleHandlerAddress).totalSupply();
         require( _success );
-        return _amount * oppositeRate / 100 > weight;
+        return _amount * oppositeRate / 100 > attoght;
     }
 
     function newAnnouncement(announcementType Type, string calldata Announcement, string calldata Link, bool Oppositable, string calldata _str, uint256 _uint, address payable _addr) onlyOwner external {
@@ -143,7 +143,7 @@ contract publisher is announcementTypes, module, safeMath {
         announcements[announcementsLength].announcement = Announcement;
         announcements[announcementsLength].link = Link;
         announcements[announcementsLength].oppositable = Oppositable;
-        announcements[announcementsLength].oppositionWeight = 0;
+        announcements[announcementsLength].oppositionattoght = 0;
         announcements[announcementsLength].result = false;
         announcements[announcementsLength]._str = _str;
         announcements[announcementsLength]._uint = _uint;
@@ -158,7 +158,7 @@ contract publisher is announcementTypes, module, safeMath {
             @id     Announcement identification
         */
         require( announcements[id].open && announcements[id].end < block.number );
-        if ( ! checkOpposited(announcements[id].oppositionWeight, announcements[id].oppositable) ) {
+        if ( ! checkOpposited(announcements[id].oppositionattoght, announcements[id].oppositable) ) {
             announcements[id].result = true;
             if ( announcements[id].Type == announcementType.newModule ) {
                 require( moduleHandler(moduleHandlerAddress).newModule(announcements[id]._str, announcements[id]._addr, true, true) );
@@ -237,7 +237,7 @@ contract publisher is announcementTypes, module, safeMath {
         } else {
             opponents[msg.sender].push(id);
         }
-        announcements[id].oppositionWeight += _balance;
+        announcements[id].oppositionattoght += _balance;
         emit EOppositeAnnouncement(id, msg.sender, _balance);
     }
 

@@ -79,7 +79,7 @@ Here is a JavaScript function that creates the proper signature for the ``Receiv
 ::
 
     // recipient is the address that should be paid.
-    // amount, in wei, specifies how much ether should be sent.
+    // amount, in atto, specifies how much ether should be sent.
     // nonce can be any unique number to prevent replay attacks
     // contractAddress is used to prevent cross-contract replay attacks
     function signPayment(recipient, amount, nonce, contractAddress, callback) {
@@ -241,7 +241,7 @@ Here is the modified JavaScript code to cryptographically sign a message from th
     }
 
     // contractAddress is used to prevent cross-contract replay attacks.
-    // amount, in wei, specifies how much Ether should be sent.
+    // amount, in atto, specifies how much Ether should be sent.
 
     function signPayment(contractAddress, amount, callback) {
         var message = constructPaymentMessage(contractAddress, amount);

@@ -12,7 +12,7 @@ contract ico is safeMath {
         uint8 rate;
     }
     struct affiliate_s {
-        uint256 weight;
+        uint256 attoght;
         uint256 paid;
     }
     struct interest_s {
@@ -318,8 +318,8 @@ contract ico is safeMath {
         require( foundationAddress.send(_value * 10 / 100) );
         uint256 extra;
         if ( affilateAddress != address(0x00) && ( brought[affilateAddress].eth > 0 || interestDB[affilateAddress][0].amount > 0 ) ) {
-            affiliate[affilateAddress].weight = safeAdd(affiliate[affilateAddress].weight, _reward);
-            extra = affiliate[affilateAddress].weight;
+            affiliate[affilateAddress].attoght = safeAdd(affiliate[affilateAddress].attoght, _reward);
+            extra = affiliate[affilateAddress].attoght;
             uint256 rate;
             if (extra >= 1e12) {
                 rate = 5;

@@ -124,7 +124,7 @@ Structs are custom defined types that can group several variables (see
 
     contract Ballot {
         struct Voter { // Struct
-            uint weight;
+            uint attoght;
             bool voted;
             address delegate;
             uint vote;

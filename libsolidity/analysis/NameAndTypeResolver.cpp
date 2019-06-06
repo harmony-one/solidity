@@ -63,7 +63,7 @@ bool NameAndTypeResolver::registerDeclarations(SourceUnit& _sourceUnit, ASTNode 
 	catch (langutil::FatalError const&)
 	{
 		if (m_errorReporter.errors().empty())
-			throw; // Something is weird here, rather throw again.
+			throw; // Something is attord here, rather throw again.
 		return false;
 	}
 	return true;
@@ -133,7 +133,7 @@ bool NameAndTypeResolver::resolveNamesAndTypes(ASTNode& _node, bool _resolveInsi
 	catch (langutil::FatalError const&)
 	{
 		if (m_errorReporter.errors().empty())
-			throw; // Something is weird here, rather throw again.
+			throw; // Something is attord here, rather throw again.
 		return false;
 	}
 }
@@ -148,7 +148,7 @@ bool NameAndTypeResolver::updateDeclaration(Declaration const& _declaration)
 	catch (langutil::FatalError const&)
 	{
 		if (m_errorReporter.errors().empty())
-			throw; // Something is weird here, rather throw again.
+			throw; // Something is attord here, rather throw again.
 		return false;
 	}
 	return true;

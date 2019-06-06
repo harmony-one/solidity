@@ -322,7 +322,7 @@ Every account has a persistent key-value store mapping 256-bit words to 256-bit
 words called **storage**.
 
 Furthermore, every account has a **balance** in
-Ether (in "Wei" to be exact, `1 ether` is `10**18 wei`) which can be modified by sending transactions that
+Ether (in "atto" to be exact, `1 ether` is `10**18 atto`) which can be modified by sending transactions that
 include Ether.
 
 .. index:: ! transaction

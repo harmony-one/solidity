@@ -40,7 +40,7 @@ of votes.
         // be used for variables later.
         // It will represent a single voter.
         struct Voter {
-            uint weight; // weight is accumulated by delegation
+            uint attoght; // attoght is accumulated by delegation
             bool voted;  // if true, that person already voted
             address delegate; // person delegated to
             uint vote;   // index of the voted proposal
@@ -64,7 +64,7 @@ of votes.
         /// Create a new ballot to choose one of `proposalNames`.
         constructor(bytes32[] memory proposalNames) public {
             chairperson = msg.sender;
-            voters[chairperson].weight = 1;
+            voters[chairperson].attoght = 1;
 
             // For each of the provided proposal names,
             // create a new proposal object and add it
@@ -101,8 +101,8 @@ of votes.
                 !voters[voter].voted,
                 "The voter already voted."
             );
-            require(voters[voter].weight == 0);
-            voters[voter].weight = 1;
+            require(voters[voter].attoght == 0);
+            voters[voter].attoght = 1;
         }
 
         /// Delegate your vote to the voter `to`.
@@ -136,11 +136,11 @@ of votes.
             if (delegate_.voted) {
                 // If the delegate already voted,
                 // directly add to the number of votes
-                proposals[delegate_.vote].voteCount += sender.weight;
+                proposals[delegate_.vote].voteCount += sender.attoght;
             } else {
                 // If the delegate did not vote yet,
-                // add to her weight.
-                delegate_.weight += sender.weight;
+                // add to her attoght.
+                delegate_.attoght += sender.attoght;
             }
         }
 
@@ -148,7 +148,7 @@ of votes.
         /// to proposal `proposals[proposal].name`.
         function vote(uint proposal) public {
             Voter storage sender = voters[msg.sender];
-            require(sender.weight != 0, "Has no right to vote");
+            require(sender.attoght != 0, "Has no right to vote");
             require(!sender.voted, "Already voted.");
             sender.voted = true;
             sender.vote = proposal;
@@ -156,7 +156,7 @@ of votes.
             // If `proposal` is out of the range of the array,
             // this will throw automatically and revert all
             // changes.
-            proposals[proposal].voteCount += sender.weight;
+            proposals[proposal].voteCount += sender.attoght;
         }
 
         /// @dev Computes the winning proposal taking all
