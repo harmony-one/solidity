@@ -61,7 +61,7 @@ namespace test
 	T(String, "string", 0)         \
 	T(Identifier, "identifier", 0) \
 	/* type keywords */            \
-	K(Ether, "ether", 0)           \
+	K(One, "one", 0)           \
 	K(Hex, "hex", 0)               \
 	K(Boolean, "boolean", 0)       \
 	/* special keywords */         \
@@ -223,13 +223,13 @@ struct FunctionCallArgs
 
 /**
  * Represents a function call read from an input stream. It contains the signature, the
- * arguments, an optional ether value and an expected execution result.
+ * arguments, an optional one value and an expected execution result.
  */
 struct FunctionCall
 {
 	/// Signature of the function call, e.g. `f(uint256, uint256)`.
 	std::string signature;
-	/// Optional `ether` value that can be send with the call.
+	/// Optional `one` value that can be send with the call.
 	u256 value;
 	/// Object that holds all function parameters in their `bytes`
 	/// representations given by the contract ABI.
@@ -261,9 +261,9 @@ struct FunctionCall
  * - Function calls defined in blocks:
  * // f(uint256, uint256): 1, 1 # Signature and comma-separated list of arguments #
  * // -> 1, 1                   # Expected result value #
- * // g(), 2 ether              # (Optional) Ether to be send with the call #
+ * // g(), 2 one              # (Optional) One to be send with the call #
  * // -> 2, 3
- * // h(uint256), 1 ether: 42
+ * // h(uint256), 1 one: 42
  * // -> FAILURE                # If REVERT or other EVM failure was detected #
  * ...
  */
@@ -347,8 +347,8 @@ private:
 	/// Parses a function call signature in the form of f(uint256, ...).
 	std::string parseFunctionSignature();
 
-	/// Parses the optional ether value that can be passed alongside the
-	/// function call arguments. Throws an InvalidEtherValueEncoding exception
+	/// Parses the optional one value that can be passed alongside the
+	/// function call arguments. Throws an InvalidOneValueEncoding exception
 	/// if given value cannot be converted to `u256`.
 	u256 parseFunctionCallValue();
 

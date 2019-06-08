@@ -178,7 +178,7 @@ void ExecutionFramework::sendMessage(bytes const& _data, bool _isCreation, u256 
 		m_transactionSuccessful = (m_gas != m_gasUsed);
 }
 
-void ExecutionFramework::sendEther(Address const& _to, u256 const& _value)
+void ExecutionFramework::sendOne(Address const& _to, u256 const& _value)
 {
 	RPCSession::TransactionData d;
 	d.data = "0x";

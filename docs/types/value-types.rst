@@ -215,7 +215,7 @@ For a quick reference of all members of address, see :ref:`address_related`.
 * ``balance`` and ``transfer``
 
 It is possible to query the balance of an address using the property ``balance``
-and to send Ether (in units of wei) to a payable address using the ``transfer`` function:
+and to send Ether (in units of atto) to a payable address using the ``transfer`` function:
 
 ::
 
@@ -618,7 +618,7 @@ Public (or external) functions have the following members:
 
 * ``.selector`` returns the :ref:`ABI function selector <abi_function_selector>`
 * ``.gas(uint)`` returns a callable function object which, when called, will send the specified amount of gas to the target function. See :ref:`External Function Calls <external-function-calls>` for more information.
-* ``.value(uint)`` returns a callable function object which, when called, will send the specified amount of wei to the target function. See :ref:`External Function Calls <external-function-calls>` for more information.
+* ``.value(uint)`` returns a callable function object which, when called, will send the specified amount of atto to the target function. See :ref:`External Function Calls <external-function-calls>` for more information.
 
 Example that shows how to use the members::
 

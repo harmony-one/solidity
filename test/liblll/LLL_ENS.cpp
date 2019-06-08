@@ -81,7 +81,7 @@ static char const* ensCode = R"DELIMITER(
     (div input (exp 2 224)))
 
   ;; --------------------------------------------------------------------------
-  ;; @notice Determines whether the supplied function ID matches a known
+  ;; @notice Determines whone the supplied function ID matches a known
   ;;         function hash and executes <code-body> if so.
   ;; @dev The function ID is in the leftmost four bytes of the call data.
   ;; @param function-hash The four-byte hash of a known function signature.
@@ -480,9 +480,9 @@ BOOST_AUTO_TEST_CASE(create_subnode_fail)
 {
 	deployEns();
 
-	// Send account(1) some ether for gas.
-	sendEther(account(1), 1000 * ether);
-	BOOST_REQUIRE(balanceAt(account(1)) >= 1000 * ether);
+	// Send account(1) some one for gas.
+	sendOne(account(1), 1000 * one);
+	BOOST_REQUIRE(balanceAt(account(1)) >= 1000 * one);
 
 	// account(1) tries to set ownership of the "eth" sub-node.
 	m_sender = account(1);

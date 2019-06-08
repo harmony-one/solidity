@@ -154,7 +154,7 @@ Sending and Receiving Ether
   into the sending contract or other state changes you might not have thought of.
   So it allows for great flexibility for honest users but also for malicious actors.
 
-- Use the most precise units to represent the wei amount as possible, as you lose
+- Use the most precise units to represent the atto amount as possible, as you lose
   any that is rounded due to a lack of precision.
 
 - If you want to send Ether using ``address.transfer``, there are certain details to be aware of:

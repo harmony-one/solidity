@@ -39,7 +39,7 @@ contract C {
 // state() -> 3
 // _() -> FAILURE
 // f() -> 2
-// f(), 1 ether -> 2
+// f(), 1 one -> 2
 // g() -> 2, 3
 // h(uint256,uint256): 1, -2 -> 3
 // j(bool): true -> false

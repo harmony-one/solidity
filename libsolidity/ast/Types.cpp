@@ -839,16 +839,16 @@ tuple<bool, rational> RationalNumberType::isValidLiteral(Literal const& _literal
 	switch (_literal.subDenomination())
 	{
 		case Literal::SubDenomination::None:
-		case Literal::SubDenomination::Wei:
+		case Literal::SubDenomination::Atto:
 		case Literal::SubDenomination::Second:
 			break;
-		case Literal::SubDenomination::Szabo:
+		case Literal::SubDenomination::Mili:
 			value *= bigint("1000000000000");
 			break;
-		case Literal::SubDenomination::Finney:
+		case Literal::SubDenomination::Micro:
 			value *= bigint("1000000000000000");
 			break;
-		case Literal::SubDenomination::Ether:
+		case Literal::SubDenomination::One:
 			value *= bigint("1000000000000000000");
 			break;
 		case Literal::SubDenomination::Minute:
@@ -2724,7 +2724,7 @@ BoolResult FunctionType::isImplicitlyConvertibleTo(Type const& _convertTo) const
 	if (m_stateMutability != StateMutability::Payable && convertTo.stateMutability() == StateMutability::Payable)
 		return false;
 
-	// payable should be convertible to non-payable, because you are free to pay 0 ether
+	// payable should be convertible to non-payable, because you are free to pay 0 one
 	if (m_stateMutability == StateMutability::Payable && convertTo.stateMutability() == StateMutability::NonPayable)
 		return true;
 

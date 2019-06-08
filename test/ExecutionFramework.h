@@ -44,11 +44,11 @@ namespace test
 	using Address = h160;
 
 	// The various denominations; here for ease of use where needed within code.
-	static const u256 wei = 1;
+	static const u256 atto = 1;
 	static const u256 shannon = u256("1000000000");
-	static const u256 szabo = shannon * 1000;
-	static const u256 finney = szabo * 1000;
-	static const u256 ether = finney * 1000;
+	static const u256 mili = shannon * 1000;
+	static const u256 micro = mili * 1000;
+	static const u256 one = micro * 1000;
 
 class ExecutionFramework
 {
@@ -246,7 +246,7 @@ private:
 
 protected:
 	void sendMessage(bytes const& _data, bool _isCreation, u256 const& _value = 0);
-	void sendEther(Address const& _to, u256 const& _value);
+	void sendOne(Address const& _to, u256 const& _value);
 	size_t currentTimestamp();
 	size_t blockTimestamp(u256 _number);
 
@@ -273,7 +273,7 @@ protected:
 	Address m_sender;
 	Address m_contractAddress;
 	u256 m_blockNumber;
-	u256 const m_gasPrice = 100 * szabo;
+	u256 const m_gasPrice = 100 * mili;
 	u256 const m_gas = 100000000;
 	bytes m_output;
 	std::vector<LogEntry> m_logs;
