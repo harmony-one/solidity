@@ -276,7 +276,7 @@ BOOST_AUTO_TEST_CASE(call_comments)
 BOOST_AUTO_TEST_CASE(call_arguments)
 {
 	char const* source = R"(
-		// f(uint256), 314 ether: 5 # optional ether value #
+		// f(uint256), 314 one: 5 # optional one value #
 		// -> 4
 	)";
 	auto const calls = parse(source);
@@ -289,7 +289,7 @@ BOOST_AUTO_TEST_CASE(call_arguments)
 		fmt::encodeArgs(5),
 		fmt::encodeArgs(4),
 		314,
-		" optional ether value "
+		" optional one value "
 	);
 }
 
@@ -510,7 +510,7 @@ BOOST_AUTO_TEST_CASE(call_multiple_arguments)
 BOOST_AUTO_TEST_CASE(call_multiple_arguments_mixed_format)
 {
 	char const* source = R"(
-		// test(uint256, uint256), 314 ether:
+		// test(uint256, uint256), 314 one:
 		// 1, -2
 		// -> -1, 2
 	)";
@@ -702,7 +702,7 @@ BOOST_AUTO_TEST_CASE(call_expectations_missing)
 	BOOST_REQUIRE_THROW(parse(source), langutil::Error);
 }
 
-BOOST_AUTO_TEST_CASE(call_ether_value_expectations_missing)
+BOOST_AUTO_TEST_CASE(call_one_value_expectations_missing)
 {
 	char const* source = R"(
 		// f(), 0)";
@@ -725,7 +725,7 @@ BOOST_AUTO_TEST_CASE(call_arguments_invalid_decimal)
 	BOOST_REQUIRE_THROW(parse(source), langutil::Error);
 }
 
-BOOST_AUTO_TEST_CASE(call_ether_value_invalid)
+BOOST_AUTO_TEST_CASE(call_one_value_invalid)
 {
 	char const* source = R"(
 		// f(uint256), abc : 1 -> 1
@@ -733,15 +733,15 @@ BOOST_AUTO_TEST_CASE(call_ether_value_invalid)
 	BOOST_REQUIRE_THROW(parse(source), langutil::Error);
 }
 
-BOOST_AUTO_TEST_CASE(call_ether_value_invalid_decimal)
+BOOST_AUTO_TEST_CASE(call_one_value_invalid_decimal)
 {
 	char const* source = R"(
-		// sig(): 0.1hd ether ->
+		// sig(): 0.1hd one ->
 	)";
 	BOOST_REQUIRE_THROW(parse(source), langutil::Error);
 }
 
-BOOST_AUTO_TEST_CASE(call_ether_type_invalid)
+BOOST_AUTO_TEST_CASE(call_one_type_invalid)
 {
 	char const* source = R"(
 		// f(uint256), 2 btc : 1 -> 1

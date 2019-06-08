@@ -77,7 +77,7 @@ void CompilerState::populateStandard()
 	"(def 'atto 1)"
 	"(def 'mili 1000000000000)"
 	"(def 'micro 1000000000000000)"
-	"(def 'ether 1000000000000000000)"
+	"(def 'one 1000000000000000000)"
 	// these could be replaced by native instructions once supported by EVM
 	"(def 'shl (val shift) (mul val (exp 2 shift)))"
 	"(def 'shr (val shift) (div val (exp 2 shift)))"

@@ -2032,7 +2032,7 @@ BOOST_AUTO_TEST_CASE(blockchain)
 			}
 		}
 	)";
-	BOOST_CHECK(m_rpc.rpcCall("miner_setEtherbase", {"\"0x1212121212121212121212121212121212121212\""}).asBool() == true);
+	BOOST_CHECK(m_rpc.rpcCall("miner_setOnebase", {"\"0x1212121212121212121212121212121212121212\""}).asBool() == true);
 	m_rpc.test_mineBlocks(5);
 	compileAndRun(sourceCode, 27);
 	ABI_CHECK(callContractFunctionWithValue("someInfo()", 28), encodeArgs(28, u256("0x1212121212121212121212121212121212121212"), 7));
@@ -2270,7 +2270,7 @@ BOOST_AUTO_TEST_CASE(convert_uint_to_fixed_bytes_greater_size)
 	);
 }
 
-BOOST_AUTO_TEST_CASE(send_ether)
+BOOST_AUTO_TEST_CASE(send_one)
 {
 	char const* sourceCode = R"(
 		contract test {
@@ -2288,7 +2288,7 @@ BOOST_AUTO_TEST_CASE(send_ether)
 	BOOST_CHECK_EQUAL(balanceAt(address), amount);
 }
 
-BOOST_AUTO_TEST_CASE(transfer_ether)
+BOOST_AUTO_TEST_CASE(transfer_one)
 {
 	char const* sourceCode = R"(
 		contract A {
@@ -2980,7 +2980,7 @@ BOOST_AUTO_TEST_CASE(contracts_as_addresses)
 {
 	char const* sourceCode = R"(
 		contract helper {
-			function() external payable { } // can receive ether
+			function() external payable { } // can receive one
 		}
 		contract test {
 			helper h;
@@ -7251,9 +7251,9 @@ BOOST_AUTO_TEST_CASE(failing_send)
 	BOOST_REQUIRE(callContractFunction("callHelper(address)", c_helperAddress) == encodeArgs(true, 20));
 }
 
-BOOST_AUTO_TEST_CASE(send_zero_ether)
+BOOST_AUTO_TEST_CASE(send_zero_one)
 {
-	// Sending zero ether to a contract should still invoke the fallback function
+	// Sending zero one to a contract should still invoke the fallback function
 	// (it previously did not because the gas stipend was not provided by the EVM)
 	char const* sourceCode = R"(
 		contract Receiver {
@@ -9810,7 +9810,7 @@ BOOST_AUTO_TEST_CASE(contract_binary_dependencies)
 	compileAndRun(sourceCode);
 }
 
-BOOST_AUTO_TEST_CASE(reject_ether_sent_to_library)
+BOOST_AUTO_TEST_CASE(reject_one_sent_to_library)
 {
 	char const* sourceCode = R"(
 		library lib {}
@@ -11581,7 +11581,7 @@ BOOST_AUTO_TEST_CASE(no_nonpayable_circumvention_by_modifier)
 	char const* sourceCode = R"(
 		contract C {
 			modifier tryCircumvent {
-				if (false) _; // avoid the function, we should still not accept ether
+				if (false) _; // avoid the function, we should still not accept one
 			}
 			function f() tryCircumvent public returns (uint) {
 				return msgvalue();
@@ -14670,7 +14670,7 @@ BOOST_AUTO_TEST_CASE(abi_encode_with_selectorv2)
 				bytes4 x = 0x12345678;
 				S memory s;
 				s.a = 0x1234567;
-				s.b = "Lorem ipsum dolor sit ethereum........";
+				s.b = "Lorem ipsum dolor sit oneeum........";
 				s.c = 0x1234;
 				return abi.encodeWithSelector(x, uint(-1), s, uint(3));
 			}
@@ -14688,7 +14688,7 @@ BOOST_AUTO_TEST_CASE(abi_encode_with_selectorv2)
 	expectation =
 		encodeArgs(0x20, 4 + 0x120) +
 		bytes{0x12, 0x34, 0x56, 0x78} +
-		encodeArgs(u256(-1), 0x60, u256(3), 0x1234567, 0x60, 0x1234, 38, "Lorem ipsum dolor sit ethereum........") +
+		encodeArgs(u256(-1), 0x60, u256(3), 0x1234567, 0x60, 0x1234, 38, "Lorem ipsum dolor sit oneeum........") +
 		bytes(0x20 - 4);
 	ABI_CHECK(callContractFunction("f4()"), expectation);
 }
@@ -14770,7 +14770,7 @@ BOOST_AUTO_TEST_CASE(abi_encode_with_signaturev2)
 				bytes4 x = 0x12345678;
 				S memory s;
 				s.a = 0x1234567;
-				s.b = "Lorem ipsum dolor sit ethereum........";
+				s.b = "Lorem ipsum dolor sit oneeum........";
 				s.c = 0x1234;
 				return abi.encodeWithSignature(s.b, uint(-1), s, uint(3));
 			}
@@ -14790,7 +14790,7 @@ BOOST_AUTO_TEST_CASE(abi_encode_with_signaturev2)
 	expectation =
 		encodeArgs(0x20, 4 + 0x120) +
 		bytes{0x7c, 0x79, 0x30, 0x02} +
-		encodeArgs(u256(-1), 0x60, u256(3), 0x1234567, 0x60, 0x1234, 38, "Lorem ipsum dolor sit ethereum........") +
+		encodeArgs(u256(-1), 0x60, u256(3), 0x1234567, 0x60, 0x1234, 38, "Lorem ipsum dolor sit oneeum........") +
 		bytes(0x20 - 4);
 	ABI_CHECK(callContractFunction("f4()"), expectation);
 }

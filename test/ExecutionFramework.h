@@ -48,7 +48,7 @@ namespace test
 	static const u256 shannon = u256("1000000000");
 	static const u256 mili = shannon * 1000;
 	static const u256 micro = mili * 1000;
-	static const u256 ether = micro * 1000;
+	static const u256 one = micro * 1000;
 
 class ExecutionFramework
 {
@@ -246,7 +246,7 @@ private:
 
 protected:
 	void sendMessage(bytes const& _data, bool _isCreation, u256 const& _value = 0);
-	void sendEther(Address const& _to, u256 const& _value);
+	void sendOne(Address const& _to, u256 const& _value);
 	size_t currentTimestamp();
 	size_t blockTimestamp(u256 _number);
 

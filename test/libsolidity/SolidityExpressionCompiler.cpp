@@ -211,7 +211,7 @@ BOOST_AUTO_TEST_CASE(int_literal)
 	BOOST_CHECK_EQUAL_COLLECTIONS(code.begin(), code.end(), expectation.begin(), expectation.end());
 }
 
-BOOST_AUTO_TEST_CASE(int_with_atto_ether_subdenomination)
+BOOST_AUTO_TEST_CASE(int_with_atto_one_subdenomination)
 {
 	char const* sourceCode = R"(
 		contract test {
@@ -226,7 +226,7 @@ BOOST_AUTO_TEST_CASE(int_with_atto_ether_subdenomination)
 	BOOST_CHECK_EQUAL_COLLECTIONS(code.begin(), code.end(), expectation.begin(), expectation.end());
 }
 
-BOOST_AUTO_TEST_CASE(int_with_mili_ether_subdenomination)
+BOOST_AUTO_TEST_CASE(int_with_mili_one_subdenomination)
 {
 	char const* sourceCode = R"(
 		contract test {
@@ -241,7 +241,7 @@ BOOST_AUTO_TEST_CASE(int_with_mili_ether_subdenomination)
 	BOOST_CHECK_EQUAL_COLLECTIONS(code.begin(), code.end(), expectation.begin(), expectation.end());
 }
 
-BOOST_AUTO_TEST_CASE(int_with_micro_ether_subdenomination)
+BOOST_AUTO_TEST_CASE(int_with_micro_one_subdenomination)
 {
 	char const* sourceCode = R"(
 		contract test {
@@ -257,12 +257,12 @@ BOOST_AUTO_TEST_CASE(int_with_micro_ether_subdenomination)
 	BOOST_CHECK_EQUAL_COLLECTIONS(code.begin(), code.end(), expectation.begin(), expectation.end());
 }
 
-BOOST_AUTO_TEST_CASE(int_with_ether_ether_subdenomination)
+BOOST_AUTO_TEST_CASE(int_with_one_one_subdenomination)
 {
 	char const* sourceCode = R"(
 		contract test {
 			constructor() {
-				 uint x = 1 ether;
+				 uint x = 1 one;
 			}
 		}
 	)";

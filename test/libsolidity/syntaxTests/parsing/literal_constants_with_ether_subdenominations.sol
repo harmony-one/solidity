@@ -4,7 +4,7 @@ contract c {
          a = 1 atto;
          b = 2 mili;
          c = 3 micro;
-         b = 4 ether;
+         b = 4 one;
     }
     uint256 a;
     uint256 b;

@@ -192,12 +192,12 @@ u256 TestFileParser::parseFunctionCallValue()
 	try
 	{
 		u256 value{parseDecimalNumber()};
-		expect(Token::Ether);
+		expect(Token::One);
 		return value;
 	}
 	catch (std::exception const&)
 	{
-		throw Error(Error::Type::ParserError, "Ether value encoding invalid.");
+		throw Error(Error::Type::ParserError, "One value encoding invalid.");
 	}
 }
 
@@ -493,7 +493,7 @@ void TestFileParser::Scanner::scanNextToken()
 	auto detectKeyword = [](std::string const& _literal = "") -> TokenDesc {
 		if (_literal == "true") return TokenDesc{Token::Boolean, _literal};
 		if (_literal == "false") return TokenDesc{Token::Boolean, _literal};
-		if (_literal == "ether") return TokenDesc{Token::Ether, _literal};
+		if (_literal == "one") return TokenDesc{Token::One, _literal};
 		if (_literal == "left") return TokenDesc{Token::Left, _literal};
 		if (_literal == "right") return TokenDesc{Token::Right, _literal};
 		if (_literal == "hex") return TokenDesc{Token::Hex, _literal};

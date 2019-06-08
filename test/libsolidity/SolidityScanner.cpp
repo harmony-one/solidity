@@ -430,13 +430,13 @@ BOOST_AUTO_TEST_CASE(comments_mixed_in_sequence)
 	BOOST_CHECK_EQUAL(scanner.currentCommentLiteral(), "documentation comment ");
 }
 
-BOOST_AUTO_TEST_CASE(ether_subdenominations)
+BOOST_AUTO_TEST_CASE(one_subdenominations)
 {
-	Scanner scanner(CharStream("atto mili micro ether", ""));
+	Scanner scanner(CharStream("atto mili micro one", ""));
 	BOOST_CHECK_EQUAL(scanner.currentToken(), Token::SubAtto);
 	BOOST_CHECK_EQUAL(scanner.next(), Token::SubMili);
 	BOOST_CHECK_EQUAL(scanner.next(), Token::SubMicro);
-	BOOST_CHECK_EQUAL(scanner.next(), Token::SubEther);
+	BOOST_CHECK_EQUAL(scanner.next(), Token::SubOne);
 }
 
 BOOST_AUTO_TEST_CASE(time_subdenominations)

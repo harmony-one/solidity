@@ -1669,7 +1669,7 @@ public:
 		Atto = static_cast<int>(Token::SubAtto),
 		Mili = static_cast<int>(Token::SubMili),
 		Micro = static_cast<int>(Token::SubMicro),
-		Ether = static_cast<int>(Token::SubEther),
+		One = static_cast<int>(Token::SubOne),
 		Second = static_cast<int>(Token::SubSecond),
 		Minute = static_cast<int>(Token::SubMinute),
 		Hour = static_cast<int>(Token::SubHour),
