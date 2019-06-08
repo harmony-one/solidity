@@ -2,7 +2,7 @@ contract c {
     function f() public
     {
          a = 1 atto;
-         b = 2 szabo;
+         b = 2 mili;
          c = 3 micro;
          b = 4 ether;
     }

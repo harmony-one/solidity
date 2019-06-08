@@ -75,7 +75,7 @@ void CompilerState::populateStandard()
 	"(def 'sha256 (val) { [0]:val (sha256 0 32) })"
 	"(def 'ripemd160 (val) { [0]:val (ripemd160 0 32) })"
 	"(def 'atto 1)"
-	"(def 'szabo 1000000000000)"
+	"(def 'mili 1000000000000)"
 	"(def 'micro 1000000000000000)"
 	"(def 'ether 1000000000000000000)"
 	// these could be replaced by native instructions once supported by EVM

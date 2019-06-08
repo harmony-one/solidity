@@ -1667,7 +1667,7 @@ public:
 	{
 		None = static_cast<int>(Token::Illegal),
 		Atto = static_cast<int>(Token::SubAtto),
-		Szabo = static_cast<int>(Token::SubSzabo),
+		Mili = static_cast<int>(Token::SubMili),
 		Micro = static_cast<int>(Token::SubMicro),
 		Ether = static_cast<int>(Token::SubEther),
 		Second = static_cast<int>(Token::SubSecond),
