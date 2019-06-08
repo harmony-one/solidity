@@ -970,11 +970,11 @@ BOOST_AUTO_TEST_CASE(ripemd160_one_arg)
 	}
 }
 
-BOOST_AUTO_TEST_CASE(atto_szabo_finney_ether)
+BOOST_AUTO_TEST_CASE(atto_szabo_micro_ether)
 {
 	char const* sourceCode = R"(
 		(returnlll
-			(return (+ atto (+ szabo (+ finney ether)))))
+			(return (+ atto (+ szabo (+ micro ether)))))
 	)";
 	compileAndRun(sourceCode);
 	BOOST_CHECK(callFallback() == encodeArgs(u256(1001001000000000001)));

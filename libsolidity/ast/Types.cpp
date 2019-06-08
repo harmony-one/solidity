@@ -845,7 +845,7 @@ tuple<bool, rational> RationalNumberType::isValidLiteral(Literal const& _literal
 		case Literal::SubDenomination::Szabo:
 			value *= bigint("1000000000000");
 			break;
-		case Literal::SubDenomination::Finney:
+		case Literal::SubDenomination::Micro:
 			value *= bigint("1000000000000000");
 			break;
 		case Literal::SubDenomination::Ether:

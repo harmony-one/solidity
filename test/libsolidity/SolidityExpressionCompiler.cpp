@@ -241,13 +241,13 @@ BOOST_AUTO_TEST_CASE(int_with_szabo_ether_subdenomination)
 	BOOST_CHECK_EQUAL_COLLECTIONS(code.begin(), code.end(), expectation.begin(), expectation.end());
 }
 
-BOOST_AUTO_TEST_CASE(int_with_finney_ether_subdenomination)
+BOOST_AUTO_TEST_CASE(int_with_micro_ether_subdenomination)
 {
 	char const* sourceCode = R"(
 		contract test {
 			constructor()
 			{
-				 uint x = 1 finney;
+				 uint x = 1 micro;
 			}
 		}
 	)";
